@@ -13,7 +13,7 @@ const Homepage = () => {
         "https://api.npoint.io/48a6a7f6c2e0f8dd6761"
       );
 
-      const data = response.json();
+      const data = await response.json();
 
       const availableTime = getAvailableAppointments(data);
       setAppointments(availableTime);

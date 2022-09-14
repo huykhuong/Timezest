@@ -1,0 +1,22 @@
+.outer__container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 50px;
+  width: 100vw;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.06) 0px 7px 29px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
+}

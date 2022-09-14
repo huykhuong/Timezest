@@ -1,0 +1,30 @@
+.container {
+  padding: 20px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  width: 100%;
+  max-width: 100px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.title {
+  text-align: center;
+}
+
+.chosen {
+  background: rgb(255, 221, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 221, 0, 1) 0%,
+    rgba(251, 176, 52, 1) 99%
+  );
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 150px;
+  }
+}

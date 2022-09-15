@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const getAvailableAppointments = (existingAppointments) => {
   const availableTime = [];
   const startTimeOfDay = "2021-03-03T08:00:00+0000";
@@ -18,15 +20,16 @@ export const getAvailableAppointments = (existingAppointments) => {
       60
     ) {
       availableTime.push(
-        Intl.DateTimeFormat("en-US", {
-          hour: "numeric",
-          minute: "numeric",
-        }).format(new Date(currTime))
+        moment(
+          String(new Date(currTime).getUTCHours()).padStart(2, "0") +
+            String(new Date(currTime).getUTCMinutes()).padStart(2, "0"),
+          "hh:mm a"
+        ).format("hh:mm A")
       );
 
-      //Increase the current time by 1 hour
+      //Increase the current time by 30 minutes
       currTime = new Date(currTime).setTime(
-        new Date(currTime).getTime() + 60 * 60 * 1000
+        new Date(currTime).getTime() + 30 * 60 * 1000
       );
     }
 
@@ -55,13 +58,15 @@ export const getAvailableAppointments = (existingAppointments) => {
         currIndex === sortedAppointments.length - 1
       ) {
         availableTime.push(
-          Intl.DateTimeFormat("en-US", {
-            hour: "numeric",
-            minute: "numeric",
-          }).format(new Date(currTime))
+          moment(
+            String(new Date(currTime).getUTCHours()).padStart(2, "0") +
+              String(new Date(currTime).getUTCMinutes()).padStart(2, "0"),
+            "hh:mm a"
+          ).format("hh:mm A")
         );
+
         currTime = new Date(currTime).setTime(
-          new Date(currTime).getTime() + 60 * 60 * 1000
+          new Date(currTime).getTime() + 30 * 60 * 1000
         );
       }
 
@@ -70,16 +75,17 @@ export const getAvailableAppointments = (existingAppointments) => {
     }
   }
 
-  //If there is still enough time between the endTimeOfDay (5pm) and endTime of the last existing appointment then we continue to find the available start times that can have 1 hour period.
+  //If there is still enough time between the endTimeOfDay (5pm) and endTime of the last existing appointment then we continue to find all the available start times that can have 1 hour period.
   while ((new Date(endTimeOfDay) - new Date(currTime)) / 60000 >= 60) {
     availableTime.push(
-      Intl.DateTimeFormat("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-      }).format(new Date(currTime))
+      moment(
+        String(new Date(currTime).getUTCHours()).padStart(2, "0") +
+          String(new Date(currTime).getUTCMinutes()).padStart(2, "0"),
+        "hh:mm a"
+      ).format("hh:mm A")
     );
     currTime = new Date(currTime).setTime(
-      new Date(currTime).getTime() + 60 * 60 * 1000
+      new Date(currTime).getTime() + 30 * 60 * 1000
     );
   }
 

@@ -21,7 +21,7 @@ export const getAvailableAppointments = (existingAppointments) => {
         Intl.DateTimeFormat("en-US", {
           hour: "numeric",
           minute: "numeric",
-        }).format(new Date(currTime).getTime() - 7 * 3600 * 1000)
+        }).format(new Date(currTime))
       );
 
       //Increase the current time by 1 hour
@@ -58,7 +58,7 @@ export const getAvailableAppointments = (existingAppointments) => {
           Intl.DateTimeFormat("en-US", {
             hour: "numeric",
             minute: "numeric",
-          }).format(new Date(currTime).getTime() - 7 * 3600 * 1000)
+          }).format(new Date(currTime))
         );
         currTime = new Date(currTime).setTime(
           new Date(currTime).getTime() + 60 * 60 * 1000
@@ -76,7 +76,7 @@ export const getAvailableAppointments = (existingAppointments) => {
       Intl.DateTimeFormat("en-US", {
         hour: "numeric",
         minute: "numeric",
-      }).format(new Date(currTime).getTime() - 7 * 3600 * 1000)
+      }).format(new Date(currTime))
     );
     currTime = new Date(currTime).setTime(
       new Date(currTime).getTime() + 60 * 60 * 1000
